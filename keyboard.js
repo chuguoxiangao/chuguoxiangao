@@ -1,5 +1,5 @@
-(function () {
-	//´´½¨Êı×Ö¼üÅÌ
+ï»¿(function () {
+	//åˆ›å»ºæ•°å­—é”®ç›˜
 	function createKeyboardNum(id) {
 		var obj = document.createElement('div');
 		obj.className = 'KeyboardNum';
@@ -14,10 +14,10 @@
 		obj.innerHTML += '<div class="KeyboardKey" value="7">7</div>';
 		obj.innerHTML += '<div class="KeyboardKey" value="8">8</div>';
 		obj.innerHTML += '<div class="KeyboardKey" value="9">9</div>';
-		obj.innerHTML += '<div class="KeyboardKey" value="ÍË¸ñ">ÍË¸ñ</div>';
+		obj.innerHTML += '<div class="KeyboardKey" value="é€€æ ¼">é€€æ ¼</div>';
 		obj.innerHTML += '<div class="KeyboardKey" value="0">0</div>';
-		obj.innerHTML += '<div class="KeyboardKey" value="Çå³ı">Çå³ı</div>';
-		//obj.innerHTML += '<div class="KeyboardKey" value=".">¡¤</div>';
+		obj.innerHTML += '<div class="KeyboardKey" value="æ¸…é™¤">æ¸…é™¤</div>';
+		//obj.innerHTML += '<div class="KeyboardKey" value=".">Â·</div>';
 		return obj;
 	}
 
@@ -33,15 +33,15 @@
 		});
 	}
 
-	//½«¼üÅÌ²åÈëµ½Ö¸¶¨µØ·½
+	//å°†é”®ç›˜æ’å…¥åˆ°æŒ‡å®šåœ°æ–¹
 	function append(obj, clickFn) {
 		if (typeof clickFn != 'function') clickFn = function () { };
 		if ($('#' + obj.id).children('.KeyboardNum').length == 0) {
 			var tempId = 'KeyboardNum' + new Date().getTime().toString();
 			$('#' + obj.id).append(createKeyboardNum(tempId));
 			if (typeof obj.dot == 'string') {
-				$('#' + obj.id + ' .KeyboardNum .KeyboardKey[value="Çå³ı"]').html(obj.dot);
-				$('#' + obj.id + ' .KeyboardNum .KeyboardKey[value="Çå³ı"]').attr('value', obj.dot);
+				$('#' + obj.id + ' .KeyboardNum .KeyboardKey[value="æ¸…é™¤"]').html(obj.dot);
+				$('#' + obj.id + ' .KeyboardNum .KeyboardKey[value="æ¸…é™¤"]').attr('value', obj.dot);
 			}
 			if (checkOS('IE8.0')) {
 				var keyList = $('#' + tempId + ' .KeyboardKey').each(function (i, e) {
@@ -56,14 +56,14 @@
 				$('#' + obj.id + ' .KeyboardNum .KeyboardKey[value="X"]').css('background-position-y', '-256px');
 			}
 			else {
-				$('#' + obj.id + ' .KeyboardNum .KeyboardKey[value="Çå³ı"]').css('background-position-y', '-320px');
+				$('#' + obj.id + ' .KeyboardNum .KeyboardKey[value="æ¸…é™¤"]').css('background-position-y', '-320px');
 			}
 		}
 		else {
 			var tempId = $('#' + obj.id).children('.KeyboardNum')[0].id;
 		}
 		$('#' + tempId).children('.KeyboardKey').unbind();
-		$('#' + tempId).children('.KeyboardKey').html('');//zw 2014-06-30 ±³¾°Í¼Æ¬´úÌæÁËÎÄ×Ö
+		$('#' + tempId).children('.KeyboardKey').html('');//zw 2014-06-30 èƒŒæ™¯å›¾ç‰‡ä»£æ›¿äº†æ–‡å­—
 		$('#' + tempId).children('.KeyboardKey').click(function () {
 			var tempKey = $(this).attr('value');
 			clickFn(tempKey);
@@ -71,7 +71,7 @@
 		return $('#' + tempId);
 	}
 
-	//µ¼³öÁĞ±í
+	//å¯¼å‡ºåˆ—è¡¨
 	this.Keyboard = {
 		append: append
 	}
